@@ -30,3 +30,11 @@ Por medio de la funcion 'app.get(param1, param2)', vamos a poder definir las rut
 §´req´: el contenedor de la informacion solicitada por medio del protocolo HTTP.
 §´res´: nos permite definir como se respondera la solicitud. Por medio del metodo res.send(), podemos responder la solicitud. Express, sin importar la respuesta, establece automaticamente el header "Content-Type".
 En el caso que enviamos el JSON, la transformacion de este objeto se da automatica por medio de express.
+
+CLASE 3: Nodemon
+
+Nodemon es un paquete que observa los archivos en el directorio en donde se inicia nodemon, y si algun archivo cambia, nodemon reinicia automaticamente la aplicacion node.
+
+CLASE 10: Json-parser
+Json-parser es un middleware que incorpora Express y nos permite tomar los datos JSON de una solicitud y transformarlos en un objeto Javascript. Se utiliza de la siguiente forma: app.use(express.json()).
+Con la ayuda de Insomnia, vamos a poder crear un nuevo elemento en nuestra lista, y verificar que los datos se envian dentro del body.

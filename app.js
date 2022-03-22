@@ -100,7 +100,7 @@ app.delete("/api/notes/:id", (req, res) => {
   }
 });
 
-//Creando un recurso
+//Creando un recurso con el metodo post
 const generateId = () => {
   const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
   return maxId + 1;

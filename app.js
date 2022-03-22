@@ -34,8 +34,12 @@
 // console.log(`Tu app esta lista en http://localhost:${PORT}`);
 
 //CLASE 2
+const { response } = require("express");
 const express = require("express");
+const nodemon = require("nodemon");
 const app = express();
+
+app.use(express.json());
 
 let notes = [
   {
@@ -94,6 +98,34 @@ app.delete("/api/notes/:id", (req, res) => {
   } else {
     res.status(400).end();
   }
+});
+
+//Creando un recurso
+const generateId = () => {
+  const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
+  return maxId + 1;
+};
+
+app.post("/api/notes", (req, res) => {
+  // console.log(note);
+  // console.log(req.headers);
+
+  const body = req.body;
+
+  if (!body.content) {
+    return res.status(400).json({ error: "content missing" });
+  }
+
+  const note = {
+    id: generateId(),
+    content: body.content,
+    important: body.important || false,
+    date: new Date(),
+  };
+
+  notes = notes.concat(note);
+
+  res.json(note);
 });
 
 const PORT = 3001;

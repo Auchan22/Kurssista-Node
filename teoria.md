@@ -38,3 +38,16 @@ Nodemon es un paquete que observa los archivos en el directorio en donde se inic
 CLASE 10: Json-parser
 Json-parser es un middleware que incorpora Express y nos permite tomar los datos JSON de una solicitud y transformarlos en un objeto Javascript. Se utiliza de la siguiente forma: app.use(express.json()).
 Con la ayuda de Insomnia, vamos a poder crear un nuevo elemento en nuestra lista, y verificar que los datos se envian dentro del body.
+
+CLASE 13: Middleware
+Un middleware es una funcion que tiene acceso al req, ers y la funcion "middleware", en el ciclo de 'pedidos-respuestas' de nuestra app. Se utilizan para manejar objetos de request y response. Por ejemplo, el json-parser, es una funcion, la cual toma los datos de las solicitudes (request), los parsea en un objeto de Javascript, y lo vuelve a asignar al objeto request como una nueva propiedad del body.
+Un middleware se utiliza para: - Ejecutar algun codigo; - Hacer cambios en los objetos "request" y "response"; - Terminar el ciclo "req-res"; - Llamar la proxima funcion middleware.
+Se pueden utilizar varios middlewares al mismo tiempo. Un middleware es una funcion que recibe 3 parametros:
+const middleware = (req, res, next) =>{}
+→ request
+→ response
+→ next: es una funcion que le cede el paso al siguiente middleware, ya que estos se ejecutan uno despues de otro.
+
+Este middleware se utiliza de la forma: app.use(middleware). Y estas se ejecutan segun el orden de llamada por medio del metodo use().
+
+Estas funciones deben utilizarse antes de las rutas si queremos que se ejecuten antes de llamar a los controladores de eventos. Aquellos middlewares que se agregan luego de las rutas, solo se llaman si ninguna ruta maneja la solicitud HTTP.
